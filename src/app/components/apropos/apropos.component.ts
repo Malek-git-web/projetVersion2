@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { SafePipe } from '../safe.pipe'; // Assurez-vous que le chemin est correct
+
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-apropos',
   standalone: true,
-  imports: [SafePipe], // Ajouter le pipe à la liste des imports
+  imports: [], // Ajouter le pipe à la liste des imports
   templateUrl: './apropos.component.html',
   styleUrls: ['./apropos.component.css']
 })

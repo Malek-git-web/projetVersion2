@@ -10,18 +10,20 @@ const URL="http://localhost:3000/admin";
 export class AuthService {
   private readonly http:HttpClient=inject(HttpClient)
  
-  getCoords():Observable<Admin>{
-    return this.http.get<Admin>(URL);
+  getCoordsById(id:string):Observable<Admin>{
+    return this.http.get<Admin>(URL+"/"+id);
 }
-  patchCoords(mdp:string):Observable<Admin>{
-    return this.http.patch<Admin>(URL,mdp);
+  patchCoords(id:string,admin:Admin):Observable<Admin>{
+    return this.http.patch<Admin>(URL+"/"+id,admin);
   }
-  login(log1:string,pwd1:string,log2:string,pwd2:string){
-let connected= log1==log2 && pwd1 ==log2;
+  login(username:string,pwd:string,log:string,mdp:string){
+let connected= (username==log) && (pwd ==mdp);
+
 if (connected)
   localStorage.setItem("state", "connected");
   else
-  localStorage.setItem("state", "disconnected");
+  {localStorage.setItem("state", "disconnected");}
+  console.log(localStorage.getItem("state"))
   return of(connected);
   }
   logout() {

@@ -1,6 +1,9 @@
 
   
   <div class="container mt-4">
+    <button class="btn btn-dark" (click)="onDisconnect()">Deconnexion</button>
+    <button type="button" (click)="changeMdp()" class=" btn btn-danger">Réinitialiser le mot de passe</button>
+    <button type="button" (click)="onRetour()" class=" btn btn-dark">Retour à la page d'acceuil</button>
     <h2>Liste des Sacs</h2>
     <div class="row">
         @for ( sac of sacs; track $index) {
@@ -36,19 +39,3 @@
     </div>
   </div>
   
-<!-- <div class="container">
-    <div class="product-actions text-center">
-        <h2>Actions sur les Sacs</h2>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button class="btn btn-primary" (click)="onAddSac()">Ajouter un Sac</button>
-            <button class="btn btn-warning" (click)="onModifSac()">Modifier un Sac</button>
-            <button class="btn btn-info" (click)="onConsultSac()" >Consulter un Sac</button>
-            <button class="btn btn-danger" (click)="onSuppSac()">Supprimer un Sac</button>
-           
-        </div>
-    </div>
-    <strong>changer votre mot de passe :</strong>
-   <input type="text"  class="form-control" #nvMdp  placeholder="Entrez votre nouveau mot de passe " >
-    <button type="submit" (click)="changeMdp(nvMdp)" class=" btn btn-secondary">Réinitialiser le mot de passe</button>
-   
-</div> -->

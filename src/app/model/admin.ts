@@ -1,3 +1,3 @@
 export class Admin {
-    constructor(public login:string,public mdp:string){}
+    constructor(public id:string, public login:string,public mdp:string){}
 }

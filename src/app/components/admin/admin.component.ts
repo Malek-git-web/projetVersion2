@@ -20,11 +20,13 @@ export class AdminComponent implements OnInit {
   authService:AuthService=inject(AuthService);
   admin!:Admin;
   ngOnInit(): void {
-    this.login=this.produitService.getLogin();
-    this.mdp=this.produitService.getMotDePasse();
-    this.authService.getCoords().subscribe(
-data=>this.admin=data
-    )
+   
+    this.authService.getCoordsById("11ff").subscribe(
+ data=>{this.admin=data
+  
+ }
+     )
+    
 
   }
   onControls(){
@@ -32,12 +34,13 @@ data=>this.admin=data
   }
 
 onSubmit(log:string,md:string){
-  this.authService.login(this.admin.login,this.admin.mdp,log,md).subscribe(
-    data=>{ if(data){
-      this.router.navigate(['/controls'])
+  
+   this.authService.login(this.admin.login,this.admin.mdp,log,md).subscribe(
+     data=>{ if(data){
+    this.router.navigate(['/controls'])
     }else{
       alert('login ou mot de passe incorrect');
     }}
-  )
+   )
 }
 }

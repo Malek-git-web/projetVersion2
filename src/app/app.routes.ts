@@ -32,6 +32,7 @@ import { ListeCommandeComponent } from './components/liste-commande/liste-comman
 import { MenuComponent } from './components/menu/menu.component';
 import { MenuAdminComponent } from './components/menu-admin/menu-admin.component';
 import { authGuard } from './auth.guard';
+import { ChangerMdpComponent } from './components/changer-mdp/changer-mdp.component';
 
 
 export const routes: Routes = [
@@ -41,8 +42,10 @@ export const routes: Routes = [
             {path:'accueil',title:'accueil',component:AccueilComponent}
             ,{path:'femme',title:'femme',component:FemmeComponent },
             {path:'homme',title:'homme',component:HommeComponent},
-            {path: 'fils',title:'fils', component: FilsComponent},
+            
             {path:'apropos',title:'a propos de nous',component:AproposComponent},
+            {path: 'fils',title:'fils', component: FilsComponent},
+            {path:'',redirectTo:'accueil',pathMatch:'full'},
             {path:'hermes.f',title:'hermes-f',component:HermesFComponent},
              {path:'chanel.f',title:'chanel-f',component:ChanelFComponent},
              {path: 'louis-vuitton.f', title: 'louis-vuitton-f', component: LuisvittonFComponent },
@@ -57,30 +60,28 @@ export const routes: Routes = [
              {path: 'accueil/:sac', component: DetailsComponent},
              {path: 'femme/:sac', component: DetailsComponent},
              {path: 'homme/:sac', component: DetailsComponent},
+             {path: 'commande',title:'commande', component: CommandeComponent},
+             {path: 'commande/:id',title:'commande', component: CommandeComponent}
         
             ] },
-
-            {path: 'admin',title:'Admin', component: AdminComponent,canActivate:[authGuard]},
+          //  canActivate:[authGuard]
+            {path: 'admin',title:'Admin', component: AdminComponent},
             {path:'',component:MenuAdminComponent,
                 children:[
-                    {path: 'controls',title:'controles', component: ControlsComponent},
-                        
+                    {path: 'controls',title:'controles', component: ControlsComponent,canActivate:[authGuard]},
                     {path: 'controls/:sac',title:'controles', component: ModifierSacComponent},
                     {path: 'ajouter-sac',title:'ajouter', component: AjouterSacComponent},
                     {path: 'modifier-sac/:sac',title:'modifier', component: ModifierSacComponent},
                     {path: 'supprimer-sac',title:'supprimer', component: SupprimerSacComponent},
                     {path: 'consulter-sac',title:'Consulter', component: ConsulterSacComponent},
-                    {path: 'commande',title:'commande', component: CommandeComponent},
                     {path:'commandes',title:'liste des commandes',component:ListeCommandeComponent},
-                    {path: 'commande/:id',title:'commande', component: CommandeComponent},
+                    {path:'changer-mdp',title:'changer mot de passe',component:ChangerMdpComponent},
                     {path:'',redirectTo:'controls',pathMatch:'full'}
                         
                     
                 ]
              }   
             
-                
-             
              ,{path:'**',title:'error',component:ErrorComponent}
         
 

@@ -757,8 +757,9 @@
   ],
   "admin": [
     {
+      "id": "11ff",
       "login": "user",
-      "mdp": "user010203"
+      "mdp": "User"
     }
   ]
 }
