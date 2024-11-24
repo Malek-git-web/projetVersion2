@@ -1,0 +1,54 @@
+
+  
+  <div class="container mt-4">
+    <h2>Liste des Sacs</h2>
+    <div class="row">
+        @for ( sac of sacs; track $index) {
+      <div class="col-md-4" >
+        <div class="card" style="width: 18rem;">
+          <img [src]="sac.photo" class="card-img-top" alt="{{sac.nom}}">
+          <div class="card-body">
+            <h5 class="card-title">{{ sac.nom }}</h5>
+            <p class="card-text">{{ sac.description }}</p>
+            <p><strong>Prix:</strong> {{ sac.prix | currency }} </p>
+            <p><strong>Categorie:</strong> {{ sac.categorie }}</p>
+            <p><strong>Quantité:</strong> {{ sac.quantite }}</p>
+            <div class="card-footer text-center">
+        
+                @if(sac.categorie=="Femme"){
+                    <button class="btn btn-outline-primary "><a [routerLink]="['/femme',sac.id]" routerLinkActive="router-link-active" >Voir les détails</a></button>
+               
+                }@else {
+                    <button class="btn btn-outline-primary "><a [routerLink]="['/homme',sac.id]" routerLinkActive="router-link-active" >Voir les détails</a></button>
+               
+                }  </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-warning" (click)="onModifSac(sac.id)" >
+                <i class="bi bi-pencil"></i> Modifier
+              </button>
+              <button class="btn btn-danger" (click)="onDeleteSac(sac.id)">
+                <i class="bi bi-trash"></i> Supprimer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>}
+    </div>
+  </div>
+  
+<!-- <div class="container">
+    <div class="product-actions text-center">
+        <h2>Actions sur les Sacs</h2>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-primary" (click)="onAddSac()">Ajouter un Sac</button>
+            <button class="btn btn-warning" (click)="onModifSac()">Modifier un Sac</button>
+            <button class="btn btn-info" (click)="onConsultSac()" >Consulter un Sac</button>
+            <button class="btn btn-danger" (click)="onSuppSac()">Supprimer un Sac</button>
+           
+        </div>
+    </div>
+    <strong>changer votre mot de passe :</strong>
+   <input type="text"  class="form-control" #nvMdp  placeholder="Entrez votre nouveau mot de passe " >
+    <button type="submit" (click)="changeMdp(nvMdp)" class=" btn btn-secondary">Réinitialiser le mot de passe</button>
+   
+</div> -->
